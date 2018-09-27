@@ -1,2 +1,2 @@
-# Anime DB app
+# Anime DB App
 WIP
