@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Anime.css';
-// import api from '../../utils/api';
+import Loading from '../Loading';
+import api from '../../utils/api';
+import AnimeListItems from '../AnimeListItems';
+import queryString from 'query-string';
 
 class Anime extends Component {
   state = {
@@ -10,39 +13,44 @@ class Anime extends Component {
   }
 
   componentDidMount() {
-    // api.fetchTopAnime().then(response => {
-    //   this.setState({ 
-    //     initialData: response,
-    //     filteredData: response
-    //   });
-    //   console.log(this.state.initialData);
-    // });
+    const filter = queryString.parse(this.props.location.search).filter;
+
+    console.log(filter);
+
+    api.switchFetchType(filter).then(response => {
+      console.log(response);
+      this.setState({ 
+        initialData: response,
+        filteredData: response
+      });
+    });
   }
 
   handleInputChange = (e) => {
-    // this.setState({ filterInput: e.target.value }, () => {
-    //   const filteredData = this.state.initialData.filter(film => {
-    //     return film.title.toLowerCase().includes(this.state.filterInput.toLowerCase());
-    //   });
+    this.setState({ filterInput: e.target.value }, () => {
+      const filteredData = this.state.initialData.filter(anime => {
+        return anime.title.toLowerCase().includes(this.state.filterInput.toLowerCase());
+      });
 
-    //   this.setState({ filteredData });
-    // });    
+      this.setState({ filteredData });
+    });    
   }
 
   render() {
-    // console.log(this.state.filteredData);
-
-    // if (!this.state.initialData) {
-    //   return <p>Loading...</p>;
-    // })
-
     return (
-      <React.Fragment>
+      <div className='anime-container'>
         <input
           type='text'
           value={this.state.filterInput}
-          onChange={this.handleInputChange} />
-      </React.Fragment>
+          onChange={this.handleInputChange}
+          placeholder='Filter List...'
+          onFocus={(e) => e.target.placeholder = ''} 
+          onBlur={(e) => e.target.placeholder = 'Filter List...'} />
+
+        {!this.state.initialData ? 
+          <Loading /> : 
+          <AnimeListItems data={this.state.filteredData} />}
+      </div>
     );
   }
 }

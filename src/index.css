@@ -11,6 +11,10 @@ html {
   background: #F6F6F6;
 }
 
+textarea, select, input, button { 
+  outline: none; 
+}
+
 .container {
   width: 100%;
 }
