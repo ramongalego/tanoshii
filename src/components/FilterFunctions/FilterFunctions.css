@@ -1,0 +1,13 @@
+input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 50px;
+  margin: 50px auto;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.8em;
+  padding: 15px;
+}

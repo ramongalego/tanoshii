@@ -1,0 +1,37 @@
+.nav-bar {
+  background: #3c3c3c;
+  margin: 0;
+  width: 100%;
+  padding: 5px;
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
+.nav-bar-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.nav-bar-content-logo {
+  display: flex;
+  cursor: pointer;
+}
+
+.nav-bar h1 {
+  color: #fff;
+  font-size: 1.8em;
+  font-weight: 200;
+  margin-bottom: 2px;
+}
+
+.logo {
+  position: relative;
+  top: 4px;
+  font-size: 2em;
+  margin-right: 10px;
+  color: #e85494;
+}
+

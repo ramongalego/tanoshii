@@ -1,0 +1,109 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.feature-title {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.list-hover-container {
+  position: absolute;
+  width: 140px;
+  height: 210px;
+  color: #fff;
+  background-color: rgba(60, 60, 60, 0.85);
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.list-hover-container:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.list-hover-container p {
+  width: 140px;
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+.list-hover-container p:first-child {
+  font-weight: 600;
+  padding: 10px 5px;
+}
+
+.list-hover-container button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 3px;
+  background: #e85494;
+  color: #f5f5f5;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.list-hover-container button:hover {
+  background: linear-gradient(#F25E9E, #e85494);
+  color: #fff;
+}
+
+.list-hover-container button:active {
+  transform: translateY(1px);
+}
+
+.feature-list li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 5px 20px 5px;
+  text-align: center;
+}
+
+.feature-list img {
+  width: 140px;
+  height: 210px;
+  border-radius: 3px;
+}
+
+.view-more {
+  background: transparent;
+  border: none;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  color: #e85494;
+}
+
+.view-more:hover {
+  cursor: pointer;
+  color: #e85494;
+}
+
+.star {
+  position: relative;
+  top: -2px;
+  color: #FDD017;
+  font-size: 0.9em;
+  margin-right: 3px;
+}
