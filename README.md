@@ -1,1 +1,2 @@
-# Anime finding app
+# Anime DB app
+WIP
