@@ -1,0 +1,13 @@
+select {
+  font-size: 1em;
+  background: white;
+  height: 35px;
+  border-color: #ccc;
+  color: #333;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: start;
+  margin: 10px 5px;
+}

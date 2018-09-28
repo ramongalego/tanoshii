@@ -14,6 +14,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    // Set seasonName and seasonYear from the helper function
+
     api.fetchTopAnime().then(response => {
       this.setState({ highestRatedAnimeData: response.slice(0, 8) });
     });
@@ -26,8 +28,6 @@ class Home extends Component {
       this.setState({ topUpcomingAnimeData: response.slice(0, 8) });
     });
   
-    // Remove the season_name, season_year and slice (getting response.anime from the api call)
-    // when the helper function getting the year and season is in place
     api.fetchCurrentSeasonAnime().then(response => {
       this.setState({
         currentSeasonAnimeData: response.slice(0, 8)
@@ -45,10 +45,6 @@ class Home extends Component {
       seasonYear
     } = this.state;
 
-    // if (!highestRatedAnimeData && !topAiringAnimeData && !topUpcomingAnimeData && !currentSeasonAnimeData) {
-    //   return <Loading />;
-    // }
-
     return (
       <div className='home-container'>
         
@@ -62,7 +58,6 @@ class Home extends Component {
           data={topAiringAnimeData}
           filter='airing' />
 
-      
         <AnimeList 
           title='Top Upcoming Anime' 
           data={topUpcomingAnimeData}

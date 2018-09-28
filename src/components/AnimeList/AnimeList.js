@@ -16,9 +16,7 @@ class AnimeList extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1 className='feature-title'>
-          {this.props.title !== 'null null Anime' ? this.props.title : 'Current Season Anime'}
-        </h1>
+        <h1 className='feature-title'>{this.props.title}</h1>
         <button 
           className='view-more'
           onClick={this.goToAnimeTypePage}>View all</button>
@@ -31,7 +29,7 @@ class AnimeList extends Component {
 }
 
 AnimeList.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   data: PropTypes.array
 }
 

@@ -1,0 +1,22 @@
+input {
+  width: 500px;
+  height: 50px;
+  margin: 50px auto;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.2em;
+  padding: 15px;
+}
+
+::-webkit-input-placeholder {
+  color: #333;
+}
+::-moz-placeholder {
+  color: #333;
+}
+:-ms-input-placeholder {
+  color: #333;
+}
+:-moz-placeholder {
+  color: #333;
+}

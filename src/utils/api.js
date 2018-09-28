@@ -23,17 +23,25 @@ const api = {
     url = `https://api.jikan.moe/v3/top/anime/1/${_type}` : 
     url = 'https://api.jikan.moe/v3/top/anime/1';
 
+    console.log('Making call to:', url);
+
     return axios.get(url).then(response => {
       return response.data.top;
     });
   },
 
   fetchCurrentSeasonAnime() {
-    // Use a helper function to determine current year/season (using moment.js) instead of hard-coding it
+    // Use a helper function to set current year/season (using moment.js) instead of hard-coding it
     const url = 'https://api.jikan.moe/v3/season/2018/fall';
 
+    console.log('Making call to:', url);
+    
     return axios.get(url).then(response => {
-      return response.data.anime;
+      const filteredResponse = response.data.anime.filter(anime => {
+        return anime.genres[0].name !== 'Hentai';
+      });
+
+      return filteredResponse;
     });
   }
 
