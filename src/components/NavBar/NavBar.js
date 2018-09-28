@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDove } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import SearchBar from '../SearchBar';
 
 const NavBar = props => {
   return (
@@ -14,7 +15,9 @@ const NavBar = props => {
             <h1>tanoshii</h1>
           </div>
         </Link>
+        <SearchBar navForm />
       </div>
+      
     </div>
   );
 }

@@ -1,11 +1,13 @@
 input {
-  width: 500px;
-  height: 50px;
+  width: 550px;
+  height: 70px;
   margin: 50px auto;
   border: none;
+  border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 1.2em;
+  font-size: 1.5em;
   padding: 15px;
+  font-weight: 200;
 }
 
 ::-webkit-input-placeholder {
@@ -19,4 +21,11 @@ input {
 }
 :-moz-placeholder {
   color: #333;
+}
+
+.nav-form {
+  width: 200px;
+  height: 25px;
+  margin: 0;
+  font-size: 1em;
 }

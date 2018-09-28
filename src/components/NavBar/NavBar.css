@@ -1,4 +1,5 @@
 .nav-bar {
+  align-items: center;
   background: #3c3c3c;
   margin: 0;
   width: 100%;
@@ -11,6 +12,8 @@
 
 .nav-bar-content {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1200px;
   margin: 0px auto;
 }
@@ -34,4 +37,3 @@
   margin-right: 10px;
   color: #e85494;
 }
-

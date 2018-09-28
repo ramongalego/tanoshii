@@ -19,11 +19,12 @@ class SearchBar extends Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type='text'
+          className={this.props.navForm ? 'nav-form' : ''}
           value={this.state.filterInput}
           onChange={this.handleInputChange}
-          placeholder='Find an anime'
+          placeholder='Find an anime...'
           onFocus={(e) => e.target.placeholder = ''} 
-          onBlur={(e) => e.target.placeholder = 'Find an anime'} />
+          onBlur={(e) => e.target.placeholder = 'Find an anime...'} />
       </form>
     );
   }

@@ -26,7 +26,7 @@ class AnimeListItems extends Component {
                       <FontAwesomeIcon className='star' icon={faStar} /> 
                       {(anime.score * 10).toFixed(1)}%
                     </p>}
-                  <button>Add To Library</button>
+                  {/*<button>Add To Library</button>*/}
                 </div>
               </li>
             );
