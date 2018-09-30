@@ -3,15 +3,25 @@ import PropTypes from 'prop-types';
 import './AnimeListItems.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { withRouter } from 'react-router-dom';
 
 class AnimeListItems extends Component {
+  goToAnimeDetailsPage = (id) => {
+    this.props.history.push({
+      pathname: `anime/${id}`
+    });
+  }
+
   render() {
+    console.log(this.props.data);
     return (
       <React.Fragment>
         <ul className='feature-list'>
           {this.props.data.map(anime => {
             return (
-              <li key={anime.mal_id}>
+              <li 
+                key={anime.mal_id}
+                onClick={() => this.goToAnimeDetailsPage(anime.mal_id)}>
                 <img src={anime.image_url} alt={`${anime.title}`} />
                 <div className='list-hover-container'>
                   <p>{anime.title}</p>
@@ -41,4 +51,4 @@ AnimeListItems.propTypes = {
   data: PropTypes.array.isRequired
 }
 
-export default AnimeListItems;
+export default withRouter(AnimeListItems);

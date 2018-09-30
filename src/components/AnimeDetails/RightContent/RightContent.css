@@ -1,0 +1,51 @@
+.right-content {
+  width: 27%;
+  padding: 10px;
+}
+
+.right-content p:first-child {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.right-content p {
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.info-bar {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 15px;
+  font-size: 0.9em;
+}
+
+.info-bar p span {
+  font-weight: 200;
+}
+
+.anime-trailer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: linear-gradient(#3c3c3c, #0a0a0a);
+  border-radius: 3px;
+  margin-bottom: 5px;
+  color: #fff;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.anime-trailer:hover {
+  background: #3c3c3c;
+}
+
+.play {
+  position: relative;
+  margin-right: 10px;
+  top: 1px;
+}

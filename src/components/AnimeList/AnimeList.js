@@ -21,7 +21,7 @@ class AnimeList extends Component {
           className='view-more'
           onClick={this.goToAnimeTypePage}>View all</button>
         {!this.props.data ? 
-          <Loading /> : 
+          <Loading /> :
           <AnimeListItems data={this.props.data} />}
       </React.Fragment>
     );

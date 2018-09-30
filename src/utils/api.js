@@ -43,6 +43,16 @@ const api = {
 
       return filteredResponse;
     });
+  },
+
+  fetchAnimeById(id) {
+    const url = `https://api.jikan.moe/v3/anime/${id}`;
+
+    console.log('Making call to:', url);
+
+    return axios.get(url).then(response => {
+      return response.data;
+    });
   }
 
 }
