@@ -50,17 +50,18 @@ input {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
 }
 
 .results-item:hover {
   cursor: pointer;
-  background: #ccc;
+  background: #e85494;
+  color: #fff;
 }
 
 .results-item img {
-  width: 70px;
-  height: 90px;
+  width: 80px;
+  height: 100px;
   margin-right: 10px;
 }
 
@@ -74,5 +75,5 @@ input {
 }
 
 .results-container div:last-child {
-  margin-bottom: 0;
+  border-bottom: none;
 }

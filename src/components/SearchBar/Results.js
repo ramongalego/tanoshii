@@ -10,28 +10,28 @@ class Results extends Component {
   }
 
   render() {
-    if (!this.props.data) {
-      return <Loading />;
-    }
-
     return (
       <div className='results-container'>
-        {this.props.data.map(data => {
-          return (
-            <div 
-              key={data.mal_id} 
-              className='results-item'
-              onClick={() => this.goToAnimeDetailsPage(data.mal_id)}>
-              <img src={data.image_url} alt={data.title} />
-              <div className='text-info'>
-                <p>{data.title}</p>
-                <p>{data.type}</p>
+        {!this.props.data && <Loading />}
+        
+        {this.props.data &&
+          this.props.data.map(data => {
+            return (
+              <div 
+                key={data.mal_id} 
+                className='results-item'
+                onClick={() => this.goToAnimeDetailsPage(data.mal_id)}>
+                <img src={data.image_url} alt={data.title} />
+                <div className='text-info'>
+                  <p>{data.title}</p>
+                  <p>{data.type}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        }
       </div>
-    )
+    );
   }
 }
 
