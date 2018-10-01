@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './AnimeListItems.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,7 @@ class AnimeListItems extends Component {
   render() {
     console.log(this.props.data);
     return (
-      <React.Fragment>
+      <Fragment>
         <ul className='feature-list'>
           {this.props.data.map(anime => {
             return (
@@ -42,7 +42,7 @@ class AnimeListItems extends Component {
             );
           })}
         </ul>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

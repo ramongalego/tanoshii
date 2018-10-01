@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './AnimeList.css';
 import { withRouter } from 'react-router-dom';
@@ -15,7 +15,7 @@ class AnimeList extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <h1 className='feature-title'>{this.props.title}</h1>
         <button 
           className='view-more'
@@ -23,7 +23,7 @@ class AnimeList extends Component {
         {!this.props.data ? 
           <Loading /> :
           <AnimeListItems data={this.props.data} />}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
