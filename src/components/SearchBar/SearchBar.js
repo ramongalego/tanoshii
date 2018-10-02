@@ -17,6 +17,7 @@ class SearchBar extends Component {
   );
 
   callApiFetchAnimeByQuery = () => {
+    this.setState({ results: null });
     api.fetchAnimeByQuery(this.state.query).then(response => {
       const slicedReponse = response.results.length > 4 ? response.results.slice(0, 4) : response.results;
       this.setState({ results: slicedReponse })
