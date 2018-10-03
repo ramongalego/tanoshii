@@ -14,15 +14,18 @@ class SearchBar extends Component {
 
   callApiFetchAnimeByQuery = () => {
     this.setState({ results: null });
-    api.fetchAnimeByQuery(this.state.query).then(response => {
-      const slicedReponse = response.results.length > 4 ? 
-      response.results.slice(0, 4) : 
-      response.results;
-      this.setState({ results: slicedReponse });
-    }).catch(e => {
-      console.log(e);
-      this.setState({ results: null });
-    });
+    // Will only make the API call if the query has at least 3 characters (Jikan API limitation)
+    if (this.state.query.length >= 3) {
+      api.fetchAnimeByQuery(this.state.query).then(response => {
+        const slicedReponse = response.results.length > 4 ? 
+        response.results.slice(0, 4) : 
+        response.results;
+        this.setState({ results: slicedReponse });
+      }).catch(e => {
+        console.log(e);
+        this.setState({ results: null });
+      });
+    }
   }
 
   callApiFetchAnimeByQueryDebounced = debounce(

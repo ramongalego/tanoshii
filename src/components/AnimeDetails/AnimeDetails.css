@@ -9,3 +9,14 @@
   margin: 0 auto;
   padding-top: 30px;
 }
+
+.back-button {
+  font-size: 1.5em;
+  position: relative;
+  top: -5px;
+}
+
+.back-button:hover {
+  cursor: pointer;
+  color: #3c3c3c;
+}

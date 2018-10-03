@@ -11,7 +11,7 @@ const LeftContent = props => {
       <img src={data.image_url} alt={data.title} />
       {data.score > 0 && 
       <p className='score'>
-        <FontAwesomeIcon className='star' icon={faStar} /> 
+        <FontAwesomeIcon className='star' icon={faStar} />
         {(data.score * 10).toFixed(1)}%
       </p>}
     </div>

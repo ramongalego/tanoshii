@@ -19,7 +19,6 @@ class Results extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className={this.props.navForm ? 'nav-results' : 'results-container'}>
         {!this.props.data && <Loading />}
@@ -46,7 +45,7 @@ class Results extends Component {
 }
 
 Results.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array,
   navForm: PropTypes.bool,
   toggleShowResults: PropTypes.func
 }
