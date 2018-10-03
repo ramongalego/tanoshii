@@ -4,14 +4,21 @@ import { withRouter } from 'react-router-dom';
 
 class Results extends Component {
   goToAnimeDetailsPage = (id) => {
+    let path = '';
+
+    this.props.location.pathname.match(/anime/g) ? 
+    path = `${id}` : 
+    path = `anime/${id}`;
+
     this.props.history.push({
-      pathname: `anime/${id}`
+      pathname: path
     });
   }
 
   render() {
+    console.log(this.props);
     return (
-      <div className='results-container'>
+      <div className={this.props.navForm ? 'nav-results' : 'results-container'}>
         {!this.props.data && <Loading />}
         
         {this.props.data &&

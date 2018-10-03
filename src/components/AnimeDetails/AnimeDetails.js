@@ -12,12 +12,23 @@ class AnimeDetails extends Component {
     animeData: null
   }
 
-  componentDidMount() {
+  getIdAndFetchResults = () => {
     const animeId = Number(this.props.location.pathname.match(/\d+/g));
 
     api.fetchAnimeById(animeId).then(response => {
       this.setState({ animeData: response });
     });
+  }
+
+  componentDidMount() {
+    this.getIdAndFetchResults();
+  }
+
+  componentDidUpdate(prevProps, _prevState) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.setState({ animeData: null });
+      this.getIdAndFetchResults();
+    }
   }
 
   render() {

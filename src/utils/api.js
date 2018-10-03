@@ -56,7 +56,6 @@ const api = {
   },
 
   fetchAnimeByQuery (query) {
-    console.log('query: ', query);
     const url = `https://api.jikan.moe/v3/search/anime?q=${query}`;
 
     console.log('Making call to:', url);

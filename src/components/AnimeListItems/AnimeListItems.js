@@ -13,7 +13,6 @@ class AnimeListItems extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <Fragment>
         <ul className='feature-list'>

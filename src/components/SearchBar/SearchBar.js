@@ -11,21 +11,23 @@ class SearchBar extends Component {
     results: null
   }
 
-  callApiFetchAnimeByQueryDebounced = debounce(
-    () => this.callApiFetchAnimeByQuery(),
-    300
-  );
-
   callApiFetchAnimeByQuery = () => {
     this.setState({ results: null });
     api.fetchAnimeByQuery(this.state.query).then(response => {
-      const slicedReponse = response.results.length > 4 ? response.results.slice(0, 4) : response.results;
-      this.setState({ results: slicedReponse })
+      const slicedReponse = response.results.length > 4 ? 
+      response.results.slice(0, 4) : 
+      response.results;
+      this.setState({ results: slicedReponse });
     }).catch(e => {
       console.log(e);
       this.setState({ results: null });
     });
   }
+
+  callApiFetchAnimeByQueryDebounced = debounce(
+    () => this.callApiFetchAnimeByQuery(),
+    300
+  );
 
   componentDidUpdate(_prevProps, prevState) {
     if (prevState.query !== this.state.query) {
@@ -46,6 +48,18 @@ class SearchBar extends Component {
     e.preventDefault()
   }
 
+  handleBlur = (e) => {
+    e.target.placeholder = 'Find an anime...';
+    // this.setState({ showResults: false });
+  }
+
+  handleFocus = (e) => {
+    e.target.placeholder = '';
+    // if (this.state.results) {
+    //   this.setState({ showResults: true });
+    // }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -55,9 +69,9 @@ class SearchBar extends Component {
           value={this.state.filterInput}
           onChange={this.handleInputChange}
           placeholder='Find an anime...'
-          onFocus={(e) => e.target.placeholder = ''} 
-          onBlur={(e) => e.target.placeholder = 'Find an anime...'} />
-        {this.state.showResults && <Results data={this.state.results} />}
+          onFocus={this.handleFocus} 
+          onBlur={this.handleBlur} />
+        {this.state.showResults && <Results data={this.state.results} navForm={this.props.navForm} />}
       </form>
     );
   }
