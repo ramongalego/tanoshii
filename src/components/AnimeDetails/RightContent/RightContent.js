@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './RightContent.css';
 import AnimeTrailer from './AnimeTrailer';
 
@@ -22,6 +23,10 @@ const RightContent = props => {
       </div>
     </div>
   );
+}
+
+RightContent.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default RightContent;

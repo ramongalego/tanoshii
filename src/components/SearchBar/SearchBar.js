@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './SearchBar.css';
 import Results from './Results';
 import api from '../../utils/api';
@@ -35,6 +36,10 @@ class SearchBar extends Component {
     }
   }
 
+  toggleShowResults = () => {
+    this.setState({ showResults: !this.state.showResults });
+  }
+
   handleInputChange = (e) => {
     this.setState({ query: e.target.value }, 
       () => {
@@ -55,9 +60,9 @@ class SearchBar extends Component {
 
   handleFocus = (e) => {
     e.target.placeholder = '';
-    // if (this.state.results) {
-    //   this.setState({ showResults: true });
-    // }
+    if (this.state.results) {
+      this.setState({ showResults: true });
+    }
   }
 
   render() {
@@ -66,15 +71,23 @@ class SearchBar extends Component {
         <input
           type='text'
           className={this.props.navForm ? 'nav-form' : ''}
+          placeholder='Find an anime...'
           value={this.state.filterInput}
           onChange={this.handleInputChange}
-          placeholder='Find an anime...'
           onFocus={this.handleFocus} 
           onBlur={this.handleBlur} />
-        {this.state.showResults && <Results data={this.state.results} navForm={this.props.navForm} />}
+        {this.state.showResults && 
+        <Results 
+          data={this.state.results} 
+          navForm={this.props.navForm}
+          toggleShowResults={this.toggleShowResults} />}
       </form>
     );
   }
+}
+
+SearchBar.propTypes = {
+  navForm: PropTypes.bool
 }
 
 export default SearchBar;

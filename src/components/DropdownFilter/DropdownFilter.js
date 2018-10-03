@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import './DropdownFilter.css';
 
@@ -33,6 +34,10 @@ class DropdownFilter extends Component {
       </div>
     );
   }
+}
+
+DropdownFilter.propTypes = {
+  filter: PropTypes.string.isRequired
 }
 
 export default withRouter(DropdownFilter);

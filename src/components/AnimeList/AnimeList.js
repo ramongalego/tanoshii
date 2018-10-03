@@ -30,6 +30,7 @@ class AnimeList extends Component {
 
 AnimeList.propTypes = {
   title: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   data: PropTypes.array
 }
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import SearchBar from '../SearchBar';
 
-const NavBar = props => {
+const NavBar = () => {
   return (
     <div className='nav-bar'>
       <div className='nav-bar-content'>

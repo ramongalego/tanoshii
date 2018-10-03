@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './LeftContent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +16,10 @@ const LeftContent = props => {
       </p>}
     </div>
   );
+}
+
+LeftContent.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default LeftContent;

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Loading from '../Loading';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Results extends Component {
   goToAnimeDetailsPage = (id) => {
+    this.props.toggleShowResults();
+
     let path = '';
 
-    this.props.location.pathname.match(/anime/g) ? 
+    this.props.location.pathname.match(/anime\//g) ? 
     path = `${id}` : 
     path = `anime/${id}`;
 
@@ -40,6 +43,12 @@ class Results extends Component {
       </div>
     );
   }
+}
+
+Results.propTypes = {
+  data: PropTypes.object.isRequired,
+  navForm: PropTypes.bool,
+  toggleShowResults: PropTypes.func
 }
 
 export default withRouter(Results);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MiddleContent.css';
 
 const MiddleContent = props => {
@@ -30,6 +31,10 @@ const MiddleContent = props => {
       </div>
     </div>
   );
+}
+
+MiddleContent.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default MiddleContent;
