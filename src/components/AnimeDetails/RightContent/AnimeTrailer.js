@@ -19,8 +19,10 @@ class AnimeTrailer extends Component {
         <FontAwesomeIcon className='play' icon={faPlay} />
         <h3>Play Trailer</h3>
         {this.state.showModal &&
-          <Modal toggleShowModal={this.toggleShowModal}>
+          <Modal>
             <iframe 
+              title='Anime Trailer'
+              aria-hidden='true'
               type='text/html' 
               width='740' 
               height='460'

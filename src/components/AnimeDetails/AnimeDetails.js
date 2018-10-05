@@ -35,11 +35,12 @@ class AnimeDetails extends Component {
   render() {
     const { animeData } = this.state;
 
-    console.log(animeData);
-
     if (!animeData) {
       return <Loading />;
     }
+    
+    console.log(animeData);
+    
     return (
       <div className='details-container'>
         <FontAwesomeIcon 

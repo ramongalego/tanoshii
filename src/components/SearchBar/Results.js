@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 class Results extends Component {
   goToAnimeDetailsPage = (id) => {
-    this.props.toggleShowResults();
-
     let path = '';
 
     this.props.location.pathname.match(/anime\//g) ? 
@@ -29,7 +27,7 @@ class Results extends Component {
               <div 
                 key={data.mal_id} 
                 className='results-item'
-                onClick={() => this.goToAnimeDetailsPage(data.mal_id)}>
+                onMouseDown={() => this.goToAnimeDetailsPage(data.mal_id)}>
                 <img src={data.image_url} alt={data.title} />
                 <div className='text-info'>
                   <p>{data.title}</p>

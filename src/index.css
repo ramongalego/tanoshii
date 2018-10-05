@@ -18,3 +18,7 @@ textarea, select, input, button {
 .container {
   width: 100%;
 }
+
+button:active {
+  transform: translateY(1px);
+}

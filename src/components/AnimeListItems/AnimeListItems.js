@@ -20,7 +20,7 @@ class AnimeListItems extends Component {
             return (
               <li 
                 key={anime.mal_id}
-                onClick={() => this.goToAnimeDetailsPage(anime.mal_id)}>
+                onClick={(e) => this.goToAnimeDetailsPage(anime.mal_id)}>
                 <img src={anime.image_url} alt={`${anime.title}`} />
                 <div className='list-hover-container'>
                   <p>{anime.title}</p>

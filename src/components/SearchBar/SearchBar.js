@@ -58,7 +58,7 @@ class SearchBar extends Component {
 
   handleBlur = (e) => {
     e.target.placeholder = 'Find an anime...';
-    // this.setState({ showResults: false });
+    this.setState({ showResults: false });
   }
 
   handleFocus = (e) => {
