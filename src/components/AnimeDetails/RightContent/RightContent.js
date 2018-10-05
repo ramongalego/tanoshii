@@ -3,8 +3,21 @@ import PropTypes from 'prop-types';
 import './RightContent.css';
 import AnimeTrailer from './AnimeTrailer';
 
-const RightContent = props => {
-  const { data } = props;
+const RightContent = ({ data }) => {
+
+  const getAndFormatStudios = () => {
+    let studios = [];
+    
+    data.studios.forEach(studio => {
+      studios.push(studio.name);
+    });
+
+    if (data.studios.length > 1) {
+      return <p>Studios: <span>{studios.join(', ')}</span></p>;
+    } 
+
+    return <p>Studio: <span>{studios}</span></p>;
+  }
 
   return (
     <div className='right-content'>
@@ -17,7 +30,7 @@ const RightContent = props => {
         {data.type === 'TV' && <p>Episodes: <span>{data.episodes}</span></p>}
         {data.premiered && <p>Season: <span>{data.premiered}</span></p>}
         <p>Status: <span>{data.status}</span></p>
-        {data.studios && <p>Studio: <span>{data.studios.map(studio => studio.name)}</span></p>}
+        {getAndFormatStudios()}
         {data.source && <p>Source: <span>{data.source}</span></p>}
         {data.rating && <p>Rating: <span>{data.rating}</span></p>}
       </div>

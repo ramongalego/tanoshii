@@ -23,9 +23,8 @@ class AnimeTrailer extends Component {
             <iframe 
               title='Anime Trailer'
               aria-hidden='true'
-              type='text/html' 
-              width='740' 
-              height='460'
+              type='text/html'
+              className='iframe-trailer'
               src={this.props.trailer}
               frameBorder='0'></iframe>
           </Modal>

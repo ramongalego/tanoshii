@@ -7,9 +7,9 @@ const api = {
       case 'highest-rated':
         return this.fetchTopAnime();
       case 'airing':
-        return this.fetchTopAnime('airing');
+        return this.fetchTopAnime(filter);
       case 'upcoming':
-        return this.fetchTopAnime('upcoming');
+        return this.fetchTopAnime(filter);
       case 'current-season':
         return this.fetchCurrentSeasonAnime();
       default:
@@ -19,9 +19,10 @@ const api = {
 
   fetchTopAnime (_type) {
     let url = '';
-    _type ? 
-    url = `https://api.jikan.moe/v3/top/anime/1/${_type}` : 
-    url = 'https://api.jikan.moe/v3/top/anime/1';
+    
+    _type 
+    ? url = `https://api.jikan.moe/v3/top/anime/1/${_type}` 
+    : url = 'https://api.jikan.moe/v3/top/anime/1';
 
     console.log('Making call to:', url);
 
