@@ -18,7 +18,7 @@ class AnimeList extends Component {
       <Fragment>
         <h1 className='feature-title'>{this.props.title}</h1>
         <button 
-          className='view-more'
+          className='view-all'
           onClick={this.goToAnimeTypePage}>View all</button>
         {!this.props.data ? 
           <Loading /> :

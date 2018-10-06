@@ -3,7 +3,7 @@
   font-size: 1.3em;
 }
 
-.view-more {
+.view-all {
   background: transparent;
   border: none;
   font-size: 0.8em;
@@ -11,7 +11,7 @@
   color: #e85494;
 }
 
-.view-more:hover {
+.view-all:hover {
   cursor: pointer;
   color: #e85494;
 }

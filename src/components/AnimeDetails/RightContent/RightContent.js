@@ -7,7 +7,7 @@ const RightContent = ({ data }) => {
 
   const getAndFormatStudios = () => {
     let studios = [];
-    
+
     data.studios.forEach(studio => {
       studios.push(studio.name);
     });

@@ -15,3 +15,36 @@
   padding: 0;
   margin: 0;
 }
+
+.page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.page-container li {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #e85494;
+  border-right: none;
+  font-size: 1.1em;
+}
+
+.page-container li:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.page-container li:last-child {
+  border-right: 1px solid #ccc;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.page-container li:hover {
+  cursor: pointer;
+  background: #e85494;
+  color: #fff;
+}
