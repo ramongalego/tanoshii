@@ -4,7 +4,6 @@ import './RightContent.css';
 import AnimeTrailer from './AnimeTrailer';
 
 const RightContent = ({ data }) => {
-
   const getAndFormatStudios = () => {
     let studios = [];
 

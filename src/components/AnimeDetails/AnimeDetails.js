@@ -13,11 +13,12 @@ class AnimeDetails extends Component {
     animeData: null
   }
 
-  async getIdAndFetchResults () {
+  getIdAndFetchResults = async () => {
     const animeId = Number(this.props.location.pathname.match(/\d+/g));
 
     const animeData = await fetchAnimeById(animeId);
     this.setState({ animeData });
+    console.log('animeData', animeData);
   }
 
   componentDidMount() {
@@ -33,19 +34,18 @@ class AnimeDetails extends Component {
 
   render() {
     const { animeData } = this.state;
+    const { history } = this.props;
 
     if (!animeData) {
       return <Loading />;
     }
-    
-    console.log(animeData);
     
     return (
       <div className='details-container'>
         <FontAwesomeIcon 
           className='back-button' 
           icon={faArrowLeft}
-          onClick={this.props.history.goBack} />
+          onClick={history.goBack} />
         <LeftContent data={animeData} />
         <MiddleContent data={animeData} />
         <RightContent data={animeData} />

@@ -13,22 +13,22 @@ class Home extends Component {
     seasonYear: '2018'
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // Set seasonName and seasonYear from the helper function
-    fetchTopAnime().then(response => {
-      this.setState({ highestRatedAnimeData: response.slice(0, 8) });
+    fetchTopAnime().then(highestRated => {
+      this.setState({ highestRatedAnimeData: highestRated.slice(0, 8) });
     });
     
-    fetchTopAnime('airing').then(response => {
-      this.setState({ topAiringAnimeData: response.slice(0, 8) });
+    fetchTopAnime('airing').then(topAiring => {
+      this.setState({ topAiringAnimeData: topAiring.slice(0, 8) });
     });
   
-    fetchTopAnime('upcoming').then(response => {
-      this.setState({ topUpcomingAnimeData: response.slice(0, 8) });
+    fetchTopAnime('upcoming').then(topUpcoming => {
+      this.setState({ topUpcomingAnimeData: topUpcoming.slice(0, 8) });
     });
   
-    fetchCurrentSeasonAnime().then(response => {
-      this.setState({ currentSeasonAnimeData: response.slice(0, 8) });
+    fetchCurrentSeasonAnime().then(currentSeason => {
+      this.setState({ currentSeasonAnimeData: currentSeason.slice(0, 8) });
     });
   }
   
@@ -44,7 +44,6 @@ class Home extends Component {
 
     return (
       <div className='home-container'>
-        
         <AnimeList 
           title={`${seasonName} ${seasonYear} Anime`} 
           data={currentSeasonAnimeData}

@@ -8,6 +8,10 @@ class DropdownFilter extends Component {
     selected: ''
   }
 
+  static propTypes = {
+    filter: PropTypes.string.isRequired
+  }
+
   componentDidMount() {
     this.setState({ selected: this.props.filter });
   }
@@ -23,10 +27,12 @@ class DropdownFilter extends Component {
   }
 
   render() {
+    const { selected } = this.state;
+
     return (
       <div className='dropdown-container'>
         <select 
-          value={this.state.selected}
+          value={selected}
           onChange={this.handleSelectChange}>
           <option value='current-season'>Fall 2018 Anime</option>
           <option value='airing'>Top Aring Anime</option>
@@ -36,10 +42,6 @@ class DropdownFilter extends Component {
       </div>
     );
   }
-}
-
-DropdownFilter.propTypes = {
-  filter: PropTypes.string.isRequired
 }
 
 export default withRouter(DropdownFilter);

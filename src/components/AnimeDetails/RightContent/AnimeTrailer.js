@@ -9,33 +9,35 @@ class AnimeTrailer extends Component {
     showModal: false
   }
 
+  static propTypes = {
+    trailer: PropTypes.string.isRequired
+  }
+
   toggleShowModal = () => {
     this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
+    const { showModal } = this.state;
+    const { trailer } = this.props;
+
     return (
       <div className='anime-trailer' onClick={this.toggleShowModal}>
         <FontAwesomeIcon className='play' icon={faPlay} />
         <h3>Play Trailer</h3>
-        {this.state.showModal &&
+        {showModal &&
           <Modal>
             <iframe 
               title='Anime Trailer'
               aria-hidden='true'
               type='text/html'
               className='iframe-trailer'
-              src={this.props.trailer}
+              src={trailer}
               frameBorder='0'></iframe>
-          </Modal>
-        }
+          </Modal>}
       </div>
     );
   }
-}
-
-AnimeTrailer.propTypes = {
-  trailer: PropTypes.string.isRequired
 }
 
 export default AnimeTrailer;

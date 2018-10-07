@@ -50,21 +50,23 @@ class Anime extends Component {
   renderPageNumbers(pageNumbers) {
     return (
       <ul className='page-container'>
-      {pageNumbers.map(number => (
-        <li
-          className={this.state.currentPage === number ? 'selected-page' : ''}
-          key={number}
-          id={number}
-          onClick={this.pageClick}>
-          {number}
-        </li>
-      ))}
+        {pageNumbers.map(number => (
+          <li
+            className={this.state.currentPage === number ? 'selected-page' : ''}
+            key={number}
+            id={number}
+            onClick={this.pageClick}>
+            {number}
+          </li>
+        ))}
       </ul>
     );
   }
 
   pageClick = (e) => {
-    this.setState({ currentPage: Number(e.target.id) });
+    const currentPage = Number(e.target.id);
+
+    this.setState({ currentPage });
   }
 
   getCurrentPageAnimeData() {
@@ -72,10 +74,10 @@ class Anime extends Component {
 
     const indexOfLastAnime = currentPage * animePerPage;
     const indexOfFirstAnime = indexOfLastAnime - animePerPage;
-    const currentAnimeData = animeData.slice(indexOfFirstAnime, indexOfLastAnime);
+    const currentPageAnimeData = animeData.slice(indexOfFirstAnime, indexOfLastAnime);
 
-    console.log(currentAnimeData);
-    return currentAnimeData;
+    console.log('currentPageAnimeData', currentPageAnimeData);
+    return currentPageAnimeData;
   }
 
   render() {
@@ -85,10 +87,10 @@ class Anime extends Component {
         {this.state.filter && 
           <DropdownFilter filter={this.state.filter} />}
         {!this.state.animeData 
-        ? <Loading /> 
-        : <AnimeListItems data={this.getCurrentPageAnimeData()} />}
+          ? <Loading /> 
+          : <AnimeListItems data={this.getCurrentPageAnimeData()} />}
         {this.state.animeData && 
-        this.renderPageNumbers(this.getPageNumbers())}
+          this.renderPageNumbers(this.getPageNumbers())}
       </div>
     );
   }

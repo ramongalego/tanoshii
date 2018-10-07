@@ -12,7 +12,11 @@ class SearchBar extends Component {
     results: null
   }
 
-  async callApiFetchAnimeByQuery () {
+  static propTypes = {
+    navForm: PropTypes.bool
+  }
+
+  callApiFetchAnimeByQuery = async () => {
     this.setState({ results: null });
     // Will only make the API call if the query has at least 3 characters (Jikan API limitation)
     if (this.state.query.length >= 3) {
@@ -49,14 +53,14 @@ class SearchBar extends Component {
 
     this.setState({ query: value }, 
       () => {
-        this.state.query === '' ? 
-        this.setState({ showResults: false, results: null }) : 
-        this.setState({ showResults: true });
+        this.state.query === '' 
+          ? this.setState({ showResults: false, results: null }) 
+          : this.setState({ showResults: true });
     }); 
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
   }
 
   handleBlur = (e) => {
@@ -72,28 +76,28 @@ class SearchBar extends Component {
   }
 
   render() {
+    const { filterInput, showResults, results } = this.state;
+    const { navForm } = this.props;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <input
           type='text'
-          className={this.props.navForm ? 'nav-form' : ''}
+          className={navForm ? 'nav-form' : ''}
           placeholder='Find an anime...'
-          value={this.state.filterInput}
+          value={filterInput}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus} 
           onBlur={this.handleBlur} />
-        {this.state.showResults && 
-        <Results 
-          data={this.state.results} 
-          navForm={this.props.navForm}
-          toggleShowResults={this.toggleShowResults} />}
+          
+        {showResults && 
+          <Results 
+            data={results} 
+            navForm={navForm}
+            toggleShowResults={this.toggleShowResults} />}
       </form>
     );
   }
-}
-
-SearchBar.propTypes = {
-  navForm: PropTypes.bool
 }
 
 export default SearchBar;

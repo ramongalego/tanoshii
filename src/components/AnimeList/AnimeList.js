@@ -1,31 +1,29 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './AnimeList.css';
 import { withRouter } from 'react-router-dom';
 import AnimeListItems from '../AnimeListItems/AnimeListItems';
 import Loading from '../Loading';
 
-class AnimeList extends Component {
-  goToAnimeTypePage = () => {
-    this.props.history.push({
+const AnimeList = ({ history, filter, title, data }) => {
+  const goToAnimeTypePage = () => {
+    history.push({
       pathname: 'anime',
-      search: `?filter=${this.props.filter}`
+      search: `?filter=${filter}`
     });
   }
 
-  render() {
-    return (
-      <Fragment>
-        <h1 className='feature-title'>{this.props.title}</h1>
-        <button 
-          className='view-all'
-          onClick={this.goToAnimeTypePage}>View all</button>
-        {!this.props.data ? 
-          <Loading /> :
-          <AnimeListItems data={this.props.data} />}
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <h1 className='feature-title'>{title}</h1>
+      <button 
+        className='view-all'
+        onClick={goToAnimeTypePage}>View all</button>
+      {!data ? 
+        <Loading /> :
+        <AnimeListItems data={data} />}
+    </Fragment>
+  );
 }
 
 AnimeList.propTypes = {

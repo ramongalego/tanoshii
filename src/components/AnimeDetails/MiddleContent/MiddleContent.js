@@ -2,23 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MiddleContent.css';
 
-const MiddleContent = props => {
-  const { data } = props;
+const MiddleContent = ({ data }) => {
+  const newLineRegex = /(?<!\w\.\w.)(?<![A-Z]\.)(?<=\.|\?|\.")\s(?![a-z])/gm;
+  const synopsis = data.synopsis
+    .split(newLineRegex)
+    .map((item, key) => {
+      return (
+        <p key={key}>
+          {item}<br/><br/>
+        </p>
+      );
+    });
 
-  const newLine = /(?<!\w\.\w.)(?<![A-Z]\.)(?<=\.|\?|\.")\s(?![a-z])/gm;
-  const synopsis = data.synopsis.split(newLine).map((item, key) => {
-    return (
-      <p key={key}>
-        {item}<br/><br/>
-      </p>
-    );
-  });
-
-  const genresTags = data.genres.map((genre, index) => {
+  const genreTags = data.genres.map((genre, index) => {
     return (
       <span 
         key={index}
-        className='genre-tag'>{genre.name}</span>
+        className='genre-tag'>
+        {genre.name}
+      </span>
     );
   });
 
@@ -27,7 +29,7 @@ const MiddleContent = props => {
       <h1>{data.title}</h1>
       <div className='synopsis'>{synopsis}</div>
       <div className='genres'>
-        {genresTags}
+        {genreTags}
       </div>
     </div>
   );
