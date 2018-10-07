@@ -13,7 +13,9 @@ class DropdownFilter extends Component {
   }
 
   handleSelectChange = (e) => {
-    this.setState({ selected: e.target.value }, () => {
+    const value = e.target.value;
+
+    this.setState({ selected: value }, () => {
       this.props.history.push({
         search: `?filter=${this.state.selected}`
       });

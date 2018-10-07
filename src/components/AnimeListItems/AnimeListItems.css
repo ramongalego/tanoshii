@@ -46,6 +46,7 @@ li {
   background-color: rgba(232, 84, 148, 0.85);
   opacity: 0;
   transition: 0.2s ease;
+  border-radius: 3px;
 }
 
 .list-hover-container:hover {

@@ -25,11 +25,12 @@
 
 .page-container li {
   padding: 5px 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #e85494;
   background: white;
   color: #e85494;
   border-right: none;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 .page-container li:first-child {
@@ -38,13 +39,12 @@
 }
 
 .page-container li:last-child {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #e85494;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
-.page-container li:hover {
-  cursor: pointer;
-  background: #e85494;
-  color: #fff;
+.selected-page {
+  background: #e85494!important;
+  color: #fff!important;
 }

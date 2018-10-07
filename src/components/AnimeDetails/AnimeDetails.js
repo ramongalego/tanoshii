@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AnimeDetails.css';
-import api from '../../utils/api';
+import { fetchAnimeById } from '../../utils/api';
 import Loading from '../Loading';
 import LeftContent from './LeftContent';
 import MiddleContent from './MiddleContent';
@@ -13,12 +13,11 @@ class AnimeDetails extends Component {
     animeData: null
   }
 
-  getIdAndFetchResults = () => {
+  async getIdAndFetchResults () {
     const animeId = Number(this.props.location.pathname.match(/\d+/g));
 
-    api.fetchAnimeById(animeId).then(response => {
-      this.setState({ animeData: response });
-    });
+    const animeData = await fetchAnimeById(animeId);
+    this.setState({ animeData });
   }
 
   componentDidMount() {

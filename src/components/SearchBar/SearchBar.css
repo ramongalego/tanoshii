@@ -63,6 +63,12 @@ input {
 .nav-results .results-item img {
   width: 60px;
   height: 80px;
+  background-size: contain;
+  margin: 0;
+}
+
+.nav-results .text-info {
+  margin-left: 10px;
 }
 
 .results-item {

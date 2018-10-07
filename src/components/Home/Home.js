@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import api from '../../utils/api';
+import { fetchTopAnime, fetchCurrentSeasonAnime } from '../../utils/api';
 import AnimeList from '../AnimeList';
 
 class Home extends Component {
@@ -15,23 +15,20 @@ class Home extends Component {
 
   componentDidMount() {
     // Set seasonName and seasonYear from the helper function
-
-    api.fetchTopAnime().then(response => {
+    fetchTopAnime().then(response => {
       this.setState({ highestRatedAnimeData: response.slice(0, 8) });
     });
     
-    api.fetchTopAnime('airing').then(response => {
+    fetchTopAnime('airing').then(response => {
       this.setState({ topAiringAnimeData: response.slice(0, 8) });
     });
   
-    api.fetchTopAnime('upcoming').then(response => {
+    fetchTopAnime('upcoming').then(response => {
       this.setState({ topUpcomingAnimeData: response.slice(0, 8) });
     });
   
-    api.fetchCurrentSeasonAnime().then(response => {
-      this.setState({
-        currentSeasonAnimeData: response.slice(0, 8)
-      });
+    fetchCurrentSeasonAnime().then(response => {
+      this.setState({ currentSeasonAnimeData: response.slice(0, 8) });
     });
   }
   

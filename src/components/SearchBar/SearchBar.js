@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SearchBar.css';
 import Results from './Results';
-import api from '../../utils/api';
+import { fetchAnimeByQuery } from '../../utils/api';
 import debounce from 'lodash/debounce';
 
 class SearchBar extends Component {
@@ -12,19 +12,20 @@ class SearchBar extends Component {
     results: null
   }
 
-  callApiFetchAnimeByQuery = () => {
+  async callApiFetchAnimeByQuery () {
     this.setState({ results: null });
     // Will only make the API call if the query has at least 3 characters (Jikan API limitation)
     if (this.state.query.length >= 3) {
-      api.fetchAnimeByQuery(this.state.query).then(response => {
-        const slicedReponse = response.results.length > 4 ? 
-        response.results.slice(0, 4) : 
-        response.results;
-        this.setState({ results: slicedReponse });
-      }).catch(e => {
-        console.log(e);
-        this.setState({ results: null });
-      });
+      const response = await fetchAnimeByQuery(this.state.query)
+        .catch(e => console.log(e));
+
+      if (response) {
+        const resultsSliced = response.results.length > 4 
+          ? response.results.slice(0, 4)
+          : response.results;
+
+        this.setState({ results: resultsSliced });
+      }
     }
   }
 
@@ -44,7 +45,9 @@ class SearchBar extends Component {
   }
 
   handleInputChange = (e) => {
-    this.setState({ query: e.target.value }, 
+    const value = e.target.value;
+
+    this.setState({ query: value }, 
       () => {
         this.state.query === '' ? 
         this.setState({ showResults: false, results: null }) : 

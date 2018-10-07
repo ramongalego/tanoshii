@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Anime.css';
 import Loading from '../Loading';
-import api from '../../utils/api';
+import { switchFetchType } from '../../utils/api';
 import AnimeListItems from '../AnimeListItems';
 import queryString from 'query-string';
 import SearchBar from '../SearchBar';
@@ -12,29 +12,27 @@ class Anime extends Component {
     animeData: null,
     filter: '',
     currentPage: 1,
-    animePerPage: 25
+    animePerPage: 30
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const filter = queryString.parse(this.props.location.search).filter;
 
     this.setState({ filter });
 
-    api.switchFetchType(filter).then(response => {
-      this.setState({ animeData: response });
-    });
+    const animeData = await switchFetchType(filter);
+    this.setState({ animeData });
   }
 
-  componentDidUpdate (prevProps, _prevState) {
+  async componentDidUpdate (prevProps, _prevState) {
     const prevFilter = queryString.parse(prevProps.location.search).filter;
     const thisFilter = queryString.parse(this.props.location.search).filter;
 
     if (prevFilter !== thisFilter) {
-      this.setState({ animeData: null }, () => {
-        api.switchFetchType(thisFilter).then(response => {
-          this.setState({ animeData: response });
-        });
-      });
+      this.setState({ animeData: null });
+
+      const animeData = await switchFetchType(thisFilter);
+      this.setState({ animeData });
     }
   }
 
@@ -54,6 +52,7 @@ class Anime extends Component {
       <ul className='page-container'>
       {pageNumbers.map(number => (
         <li
+          className={this.state.currentPage === number ? 'selected-page' : ''}
           key={number}
           id={number}
           onClick={this.pageClick}>
