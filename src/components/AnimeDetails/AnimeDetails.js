@@ -37,7 +37,7 @@ class AnimeDetails extends Component {
     const { history } = this.props;
 
     if (!animeData) {
-      return <Loading />;
+      return <Loading style={{position: 'absolute', width: '26px', height: '26px'}} />;
     }
     
     return (

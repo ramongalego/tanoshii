@@ -87,7 +87,7 @@ class Anime extends Component {
         {this.state.filter && 
           <DropdownFilter filter={this.state.filter} />}
         {!this.state.animeData 
-          ? <Loading /> 
+          ? <Loading style={{ position: 'absolute' }} /> 
           : <AnimeListItems data={this.getCurrentPageAnimeData()} />}
         {this.state.animeData && 
           this.renderPageNumbers(this.getPageNumbers())}
