@@ -10,7 +10,7 @@ class AnimeTrailer extends Component {
   }
 
   static propTypes = {
-    trailer: PropTypes.string.isRequired
+    trailer: PropTypes.string
   }
 
   toggleShowModal = () => {

@@ -93,8 +93,7 @@ class SearchBar extends Component {
         {showResults && 
           <Results 
             data={results} 
-            navForm={navForm}
-            toggleShowResults={this.toggleShowResults} />}
+            navForm={navForm} />}
       </form>
     );
   }

@@ -32,6 +32,7 @@ class DropdownFilter extends Component {
     return (
       <div className='dropdown-container'>
         <select 
+          className='dropdown-select'
           value={selected}
           onChange={this.handleSelectChange}>
           <option value='current-season'>Fall 2018 Anime</option>
