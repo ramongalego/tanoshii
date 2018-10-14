@@ -22,7 +22,10 @@ class AnimeTrailer extends Component {
     const { trailer } = this.props;
 
     return (
-      <div className='anime-trailer' onClick={this.toggleShowModal}>
+      <div 
+        data-testid='anime-trailer' 
+        className='anime-trailer' 
+        onClick={this.toggleShowModal}>
         <FontAwesomeIcon className='play' icon={faPlay} />
         <h3>Play Trailer</h3>
         {showModal &&

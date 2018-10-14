@@ -1,18 +1,22 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { render, cleanup, fireEvent } from 'react-testing-library';
+import { MemoryRouter } from 'react-router-dom';
 import DropdownFilter from './DropdownFilter';
-import { withRouter } from 'react-router-dom';
 
-configure({ adapter: new Adapter() });
+afterEach(cleanup);
 
-describe('<DropdownFilter />', () => {
-  it('Should change selected state on change', () => {
-    const DropdownComponent = withRouter(<DropdownFilter />);
-    const wrapper = shallow(<DropdownComponent />);
-    const select = wrapper.find('select');
-    select.simulate('change', { target: { value: 'test'} });
-    const selected = wrapper.state().selected;
-    expect(selected).toBe('test');
+const filter = 'highest-rated';
+
+test('<DropdownFilter />', () => {
+  const { getByTestId } = render(
+    <MemoryRouter>
+      <DropdownFilter filter={filter} />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(getByTestId('dropdown-filter'), {
+    target: { value: 'current-season' }
   });
+
+  expect(getByTestId('dropdown-filter').value).toBe('current-season');
 });

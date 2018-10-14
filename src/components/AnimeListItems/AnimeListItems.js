@@ -12,6 +12,8 @@ const AnimeListItems = ({ data, history }) => {
     });
   }
 
+  if (!data) return null;
+
   return (
     <Fragment>
       <ul className='feature-list'>

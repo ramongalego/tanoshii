@@ -15,7 +15,7 @@ class AnimeDetails extends Component {
 
   getIdAndFetchResults = async () => {
     const animeId = Number(this.props.location.pathname.match(/\d+/g));
-
+    
     const animeData = await fetchAnimeById(animeId);
     this.setState({ animeData });
     console.log('animeData', animeData);
@@ -37,7 +37,7 @@ class AnimeDetails extends Component {
     const { history } = this.props;
 
     if (!animeData) {
-      return <Loading style={{position: 'absolute', width: '26px', height: '26px'}} />;
+      return <Loading style={{ position: 'absolute' }} />;
     }
     
     return (

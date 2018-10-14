@@ -22,6 +22,7 @@ const Results = ({ location, history, navForm, data }) => {
         data.map(data => {
           return (
             <div 
+              data-testid='results'
               key={data.mal_id} 
               className='results-item'
               onMouseDown={() => goToAnimeDetailsPage(data.mal_id)}>
@@ -38,7 +39,7 @@ const Results = ({ location, history, navForm, data }) => {
 }
 
 Results.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
   navForm: PropTypes.bool
 }
 

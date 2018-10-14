@@ -20,7 +20,7 @@ const RightContent = ({ data }) => {
 
   return (
     <div className='right-content'>
-      <AnimeTrailer trailer={data.trailer_url} />
+      {data.trailer_url && <AnimeTrailer trailer={data.trailer_url} />}
       <div className='info-bar'>
         <p>Anime Details</p>
         <p>English</p> {data.title_english}

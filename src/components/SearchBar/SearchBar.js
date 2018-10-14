@@ -76,16 +76,19 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { filterInput, showResults, results } = this.state;
+    const { query, showResults, results } = this.state;
     const { navForm } = this.props;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        data-testid='search-bar'
+        onSubmit={this.handleSubmit}>
         <input
+          data-testid='search-bar-input'
           type='text'
           className={navForm ? 'nav-form' : ''}
           placeholder='Find an anime...'
-          value={filterInput}
+          value={query}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus} 
           onBlur={this.handleBlur} />
