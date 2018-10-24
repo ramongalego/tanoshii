@@ -16,12 +16,18 @@ class Anime extends Component {
   }
 
   async componentDidMount() {
+    this._mounted = true;
+
     const filter = queryString.parse(this.props.location.search).filter;
 
     this.setState({ filter });
 
     const animeData = await switchFetchType(filter);
-    this.setState({ animeData });
+    this._mounted && this.setState({ animeData });
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
   }
 
   async componentDidUpdate (prevProps, _prevState) {

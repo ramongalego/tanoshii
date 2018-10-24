@@ -14,22 +14,27 @@ class Home extends Component {
   }
 
   async componentDidMount() {
+    this._mounted = true;
     // Set seasonName and seasonYear from the helper function
     fetchTopAnime().then(highestRated => {
-      this.setState({ highestRatedAnimeData: highestRated.slice(0, 8) });
+      this._mounted && this.setState({ highestRatedAnimeData: highestRated.slice(0, 8) });
     });
     
     fetchTopAnime('airing').then(topAiring => {
-      this.setState({ topAiringAnimeData: topAiring.slice(0, 8) });
+      this._mounted && this.setState({ topAiringAnimeData: topAiring.slice(0, 8) });
     });
   
     fetchTopAnime('upcoming').then(topUpcoming => {
-      this.setState({ topUpcomingAnimeData: topUpcoming.slice(0, 8) });
+      this._mounted && this.setState({ topUpcomingAnimeData: topUpcoming.slice(0, 8) });
     });
   
     fetchCurrentSeasonAnime().then(currentSeason => {
-      this.setState({ currentSeasonAnimeData: currentSeason.slice(0, 8) });
+      this._mounted && this.setState({ currentSeasonAnimeData: currentSeason.slice(0, 8) });
     });
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
   }
   
   render() {

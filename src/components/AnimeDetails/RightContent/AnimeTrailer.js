@@ -31,6 +31,7 @@ class AnimeTrailer extends Component {
         {showModal &&
           <Modal>
             <iframe 
+              data-testid='trailer-modal'
               title='Anime Trailer'
               aria-hidden='true'
               type='text/html'

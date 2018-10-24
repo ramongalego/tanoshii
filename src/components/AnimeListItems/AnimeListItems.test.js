@@ -28,7 +28,6 @@ const data = [{
   type: 'Highest Rated',
   episodes: '64',
   score: '10'
-
 }]
 
 test('<AnimeListItems /> with data', () => {

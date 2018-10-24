@@ -93,7 +93,7 @@ class SearchBar extends Component {
           onFocus={this.handleFocus} 
           onBlur={this.handleBlur} />
           
-        {showResults && 
+        {showResults &&
           <Results 
             data={results} 
             navForm={navForm} />}

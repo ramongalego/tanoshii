@@ -17,12 +17,17 @@ class AnimeDetails extends Component {
     const animeId = Number(this.props.location.pathname.match(/\d+/g));
     
     const animeData = await fetchAnimeById(animeId);
-    this.setState({ animeData });
-    console.log('animeData', animeData);
+    this._mounted && this.setState({ animeData });
   }
 
   componentDidMount() {
+    this._mounted = true;
+
     this.getIdAndFetchResults();
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
   }
 
   componentDidUpdate(prevProps, _prevState) {

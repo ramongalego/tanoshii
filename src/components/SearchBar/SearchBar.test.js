@@ -17,7 +17,7 @@ test('<SearchBar />', () => {
 
 console.error = jest.fn();
 
-test('<SearchBar /> input onChange renders <Results />', () => {
+test('<SearchBar /> input onChange works and renders <Results />', () => {
   const { getByTestId } = render(
     <MemoryRouter>
       <SearchBar />
@@ -29,4 +29,5 @@ test('<SearchBar /> input onChange renders <Results />', () => {
   });
 
   expect(getByTestId('search-bar-input').value).toBe('dragon');
+  // expect something inside <Results /> toBeTruthy
 });
